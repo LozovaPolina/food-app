@@ -173,6 +173,8 @@ a {
   z-index: -1
 }
 
+
+
 .tabcontainer {
   display: flex;
   width: 1130px;
@@ -180,9 +182,16 @@ a {
   box-shadow: 0 4px 30px rgba(0, 0, 0, .25)
 }
 
+
+
 .tabcontent {
   width: 850px;
-  position: relative
+  position: relative;
+  display: none;
+}
+
+.active {
+  display: block;
 }
 
 .tabcontent img {
@@ -379,7 +388,7 @@ a {
   display: block;
   width: 16px;
   height: 16px;
-  background: url(../icons/switch.svg) center center/cover no-repeat
+  background: url(./icons/switch.svg) center center/cover no-repeat
 }
 
 .calculating__choose {
