@@ -9,6 +9,7 @@ function App() {
       <Header></Header>
       <Sidepanel></Sidepanel>
       <Preview></Preview>
+      <div className='divider'></div>
     </>
   );
 }
