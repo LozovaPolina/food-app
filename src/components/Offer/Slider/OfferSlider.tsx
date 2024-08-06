@@ -1,17 +1,17 @@
 import rightImg from "../../icons/right.svg";
 import leftImg from "../../icons/left.svg";
 
-import { type SliderItemProps } from "../../types/slider.ts";
-import SliderItem from "./SliderItem.tsx";
+import { type SliderItemProps } from "../../../types/slider.ts";
+import SliderItem from "./OfferSliderItem.tsx";
 import {
   useRef,
   useState,
   type MouseEvent as ReactMouseEvent,
   type TouchEvent as ReactTouchEvent,
 } from "react";
-import { getRefValue, useStateRef } from "../../util/hooks.ts";
-import { getTouchEventData } from "../../util/dom.ts";
-import { addZeroToPositiveNum } from "../../util/numConverters.ts";
+import { getRefValue, useStateRef } from "../../../util/hooks.ts";
+import { getTouchEventData } from "../../../util/dom.ts";
+import { addZeroToPositiveNum } from "../../../util/numConverters.ts";
 type sliderProps = {
   items: SliderItemProps[];
 };

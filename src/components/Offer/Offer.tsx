@@ -1,4 +1,4 @@
-import Slider from "../Slider/Slider.tsx";
+import Slider from "./Slider/OfferSlider.tsx";
 import ContainerWrapper from "../UI/ContainerWrapper.tsx";
 import OfferText from "./OfferText.tsx";
 

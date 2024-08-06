@@ -1,4 +1,4 @@
-import { type SliderItemProps } from "../../types/slider.ts";
+import { type SliderItemProps } from "../../../types/slider.ts";
 
 function SliderItem({ altImg, srcImg }: SliderItemProps) {
   return (
