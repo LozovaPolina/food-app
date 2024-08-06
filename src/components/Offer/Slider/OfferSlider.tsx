@@ -1,5 +1,5 @@
-import rightImg from "../../icons/right.svg";
-import leftImg from "../../icons/left.svg";
+import rightImg from "../../../icons/right.svg";
+import leftImg from "../../../icons/left.svg";
 
 import { type SliderItemProps } from "../../../types/slider.ts";
 import SliderItem from "./OfferSliderItem.tsx";
