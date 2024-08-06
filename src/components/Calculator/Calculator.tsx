@@ -1,18 +1,31 @@
-import ContainerWrapper from "../UI/ContainerWrapper";
+import { useCalcContext } from "../../store/calc-context.tsx";
+import ContainerWrapper from "../UI/ContainerWrapper.tsx";
+import ChooseItem from "./CalcChooseItem.tsx";
 
 export default function Calculator() {
+  const { setGender, gender } = useCalcContext();
   return (
     <ContainerWrapper wrapperClass='calculating' divider={true}>
       <h2 className='title'>Calculate your calorie needs?</h2>
+
       <div className='calculating__field'>
         <div className='calculating__subtitle'>Your gender</div>
+
         <div className='calculating__choose' id=' gender'>
-          <div className='calculating__choose-item calculating__choose-item_active'>
-            Woman
-          </div>
-          <div className='calculating__choose-item'>Male</div>
+          <ChooseItem
+            isActive={gender === "women"}
+            title='Woman'
+            onClick={() => setGender("women")}
+          />
+          <ChooseItem
+            isActive={gender === "male"}
+            title='Male'
+            onClick={() => setGender("male")}
+          />
         </div>
+
         <div className='calculating__subtitle'>Your constitution </div>
+
         <div className='calculating__choose calculating__choose_medium'>
           <input
             type='text'
@@ -37,21 +50,10 @@ export default function Calculator() {
           Choose your physical activity
         </div>
         <div className='calculating__choose calculating__choose_big'>
-          <div id='low' className='calculating__choose-item'>
-            Low activity
-          </div>
-          <div
-            id='small'
-            className='calculating__choose-item calculating__choose-item_active'
-          >
-            Low activity
-          </div>
-          <div id='medium' className='calculating__choose-item'>
-            Moderate activity
-          </div>
-          <div id='high' className='calculating__choose-item'>
-            High activity
-          </div>
+          <ChooseItem id='low' isActive={false} title=' Low activity' />
+          <ChooseItem id='small' isActive={false} title='Low activity' />
+          <ChooseItem id='medium' isActive={false} title='Moderate activity' />
+          <ChooseItem isActive={true} id='high' title='High activity' />
         </div>
         <div className='calculating__divider'></div>
         <div className='calculating__total'>
