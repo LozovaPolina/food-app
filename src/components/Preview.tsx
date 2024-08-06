@@ -1,7 +1,7 @@
 import TabsContainer from "./Tabs/TabContainer.tsx";
 
 import { TAB_ITEM } from "../dummy-tabItems.ts";
-import ContainerWrapper from "./ContainerWrapper.tsx";
+import ContainerWrapper from "./UI/ContainerWrapper.tsx";
 
 export default function Preview() {
   return (
