@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from "react";
 type UseInputProps = {
-  defaultValue: string;
+  defaultValue: string ;
 }
 export function useInput({defaultValue}:UseInputProps) {
   const [enteredValue, setEnteredValue] = useState(defaultValue);

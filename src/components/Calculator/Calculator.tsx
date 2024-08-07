@@ -2,7 +2,8 @@ import { useCalcContext } from "../../store/calc-context.tsx";
 import ContainerWrapper from "../UI/ContainerWrapper.tsx";
 import ChooseItem from "./CalcChooseItem.tsx";
 import CalcSubtitle from "./CalcSubtitle.tsx";
-import Input from "../UI/Input.tsx";
+
+import CalcInputGroup from "./CalcInputGroup.tsx";
 
 export default function Calculator() {
   const { setGender, gender, setActivity, activity } = useCalcContext();
@@ -29,28 +30,7 @@ export default function Calculator() {
 
         <CalcSubtitle title='Your constitution' />
 
-        <div className='calculating__choose calculating__choose_medium'>
-          <Input
-            type='text'
-            id='height'
-            placeholder='Enter height'
-            className='calculating__choose-item'
-          />
-
-          <Input
-            type='text'
-            id='weight'
-            placeholder='Enter weight'
-            className='calculating__choose-item'
-          />
-
-          <Input
-            type='text'
-            id='age'
-            placeholder='Enter age'
-            className='calculating__choose-item'
-          />
-        </div>
+        <CalcInputGroup />
 
         <CalcSubtitle title='Choose your physical activity' />
 
