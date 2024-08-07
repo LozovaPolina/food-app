@@ -748,3 +748,12 @@ a {
   width: 280px;
   margin: 0 auto
 }
+
+.input-error {
+  display: block;
+  text-align: center;
+  color: #eb3c25;
+  font-size: 0.8rem;
+  height: 2rem;
+  padding: 0.5rem 0;
+}
