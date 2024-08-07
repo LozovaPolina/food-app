@@ -9,7 +9,7 @@ import {
   type MouseEvent as ReactMouseEvent,
   type TouchEvent as ReactTouchEvent,
 } from "react";
-import { getRefValue, useStateRef } from "../../../util/hooks.ts";
+import { getRefValue, useStateRef } from "../../../hooks/useStateRef.ts";
 import { getTouchEventData } from "../../../util/dom.ts";
 import { addZeroToPositiveNum } from "../../../util/numConverters.ts";
 type sliderProps = {
