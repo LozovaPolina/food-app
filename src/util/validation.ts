@@ -1,10 +1,11 @@
 export function isNumber(value: string): boolean {
   const num = +value;
-  if (typeof num === "number") return true;
+  if (num) { return true };
   return false
 }
 
 export function isNotEmpty(value: string): boolean {
-  if (value.trim() === '') return true;
+  if (value.trim() !== '') return true;
   return false
 }
+

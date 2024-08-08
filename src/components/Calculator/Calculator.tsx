@@ -6,7 +6,7 @@ import CalcSubtitle from "./CalcSubtitle.tsx";
 import CalcInputGroup from "./CalcInputGroup.tsx";
 
 export default function Calculator() {
-  const { setGender, gender, setActivity, activity } = useCalcContext();
+  const { setGender, gender, setActivity, activity, result } = useCalcContext();
 
   return (
     <ContainerWrapper wrapperClass='calculating' divider={true}>
@@ -65,7 +65,7 @@ export default function Calculator() {
           <CalcSubtitle title='Your daily calorie intake:' />
 
           <div className='calculating__result'>
-            <span>2700</span> kcal
+            <span>{result}</span> kcal
           </div>
         </div>
       </div>

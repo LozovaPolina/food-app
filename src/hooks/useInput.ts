@@ -11,10 +11,12 @@ export function useInput({defaultValue, validationFn}:UseInputProps) {
   
 
   function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
-    setEnteredValue(e.target.value);
     setDidEdit(false);
+    setEnteredValue(e.target.value);
+
   }
   function handleInputBlur() {
+ 
     setDidEdit(true);
   }
 

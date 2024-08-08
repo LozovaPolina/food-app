@@ -1,12 +1,28 @@
-import { createContext, ReactNode, useContext, useReducer } from "react";
+import {
+  createContext,
+  Dispatch,
+  ReactNode,
+  useCallback,
+  useContext,
+  useEffect,
+  useReducer,
+} from "react";
 
 type CalcState = {
   gender: "male" | "women";
   activity: "low" | "small" | "medium" | "high";
+
+  height: number;
+  weight: number;
+  age: number;
+  result: number;
 };
+
 type ContextCalcValue = {
   setGender: (gender: CalcState["gender"]) => void;
   setActivity: (activity: CalcState["activity"]) => void;
+  setConstitution: (height: number, weight: number, age: number) => void;
+  // calculateCalories: () => void;
 } & CalcState;
 
 const CalcContext = createContext<ContextCalcValue | null>(null);
@@ -14,6 +30,10 @@ const CalcContext = createContext<ContextCalcValue | null>(null);
 const initialState: CalcState = {
   gender: "male",
   activity: "medium",
+  height: 0,
+  weight: 0,
+  age: 0,
+  result: 0,
 };
 
 export function useCalcContext(): ContextCalcValue {
@@ -33,7 +53,54 @@ type SetActivityAction = {
   type: "SET_ACTIVITY";
   activity: CalcState["activity"];
 };
-type Action = SetGenderAction | SetActivityAction;
+type SetCaloriesResultAction = {
+  type: "SET_CALORIES_RESULT";
+  result: number;
+};
+type SetConstitutionAction = {
+  type: "SET_CONSTITUTION";
+  payload: {
+    height: number;
+    weight: number;
+    age: number;
+  };
+};
+type Action =
+  | SetGenderAction
+  | SetActivityAction
+  | SetCaloriesResultAction
+  | SetConstitutionAction;
+
+const activityCoefficient = {
+  low: 1.2,
+  small: 1.375,
+  medium: 1.55,
+  high: 1.725,
+};
+
+type ThunkAction = (
+  dispatch: Dispatch<Action>,
+  getState: () => CalcState
+) => void;
+
+const calculateCaloriesThunk: ThunkAction = (dispatch, getState) => {
+  const state = getState();
+
+  const { activity, age, gender, height, weight } = state;
+  if (age <= 0 || height <= 0 || weight <= 0) return;
+  let basalMetabolicRate: number;
+  let result: number;
+  if (gender === "male") {
+    basalMetabolicRate = 10 * weight + 6.25 * height - 5 * age + 5;
+    // 10 * weight (kg) + 6.25 * height(cm) - 5 * age(y) + 5 for (man)
+  } else {
+    basalMetabolicRate = 10 * weight + 6.25 * height - 5 * age - 161;
+    // 10 * weight(kg) + 6.25 * height(cm) - 5* age(y) - 161 for ​(woman)
+  }
+  result = basalMetabolicRate * activityCoefficient[activity];
+
+  dispatch({ type: "SET_CALORIES_RESULT", result });
+};
 
 function calcReducer(state: CalcState, action: Action): CalcState {
   switch (action.type) {
@@ -47,6 +114,18 @@ function calcReducer(state: CalcState, action: Action): CalcState {
         ...state,
         activity: action.activity,
       };
+    case "SET_CONSTITUTION":
+      return {
+        ...state,
+        height: +action.payload.height,
+        weight: +action.payload.weight,
+        age: +action.payload.age,
+      };
+    case "SET_CALORIES_RESULT":
+      return {
+        ...state,
+        result: action.result,
+      };
     default:
       return state;
   }
@@ -59,13 +138,36 @@ type CalcContextProviderProps = {
 export default function CalcContextProvider({
   children,
 }: CalcContextProviderProps) {
-  const [calcState, dispatch] = useReducer(calcReducer, initialState);
+  const [calcState, baseDispatch] = useReducer(calcReducer, initialState);
+
+  const dispatch: Dispatch<Action | ThunkAction> = useCallback(
+    (action) => {
+      if (typeof action === "function") {
+        (action as ThunkAction)(baseDispatch, () => calcState);
+      } else {
+        baseDispatch(action);
+      }
+    },
+    [calcState]
+  );
+  useEffect(() => {
+    dispatch(calculateCaloriesThunk);
+  }, [
+    calcState.gender,
+    calcState.activity,
+    calcState.height,
+    calcState.weight,
+    calcState.age,
+  ]);
+
   const contextValue: ContextCalcValue = {
-    gender: calcState.gender,
-    activity: calcState.activity,
+    ...calcState,
     setActivity: (activity) =>
       dispatch({ type: "SET_ACTIVITY", activity: activity }),
     setGender: (gender) => dispatch({ type: "SET_GENDER", gender: gender }),
+
+    setConstitution: (height, weight, age) =>
+      dispatch({ type: "SET_CONSTITUTION", payload: { height, weight, age } }),
   };
 
   return (
