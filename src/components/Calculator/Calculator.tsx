@@ -2,7 +2,6 @@ import { useCalcContext } from "../../store/calc-context.tsx";
 import ContainerWrapper from "../UI/ContainerWrapper.tsx";
 import ChooseItem from "./CalcChooseItem.tsx";
 import CalcSubtitle from "./CalcSubtitle.tsx";
-
 import CalcInputGroup from "./CalcInputGroup.tsx";
 
 export default function Calculator() {
