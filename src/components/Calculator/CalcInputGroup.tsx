@@ -2,10 +2,9 @@ import { useInput } from "../../hooks/useInput.ts";
 import { useCalcContext } from "../../store/calc-context.tsx";
 import { isNotEmpty, isNumber } from "../../util/validation.ts";
 import Input from "../UI/Input.tsx";
-
-export default function CalcInputGroup() {
-  const { setConstitution } = useCalcContext();
-
+function CalcInputGroup() {
+  const setConstitution = useCalcContext().setConstitution;
+  console.log("hi");
   const {
     value: heightValue,
     handleInputChange: handleHeightChange,
@@ -98,3 +97,4 @@ export default function CalcInputGroup() {
     </div>
   );
 }
+export default CalcInputGroup;
