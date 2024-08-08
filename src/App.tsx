@@ -1,5 +1,6 @@
 import Calculator from "./components/Calculator/Calculator.tsx";
 import Header from "./components/Header.tsx";
+import Menu from "./components/Menu/Menu.tsx";
 import Offer from "./components/Offer/Offer.tsx";
 import Preview from "./components/Preview.tsx";
 import Sidepanel from "./components/Sidepanel.tsx";
@@ -16,6 +17,7 @@ function App() {
       <CalcContextProvider>
         <Calculator />
       </CalcContextProvider>
+      <Menu />
     </>
   );
 }
