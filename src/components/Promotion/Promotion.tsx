@@ -1,6 +1,8 @@
 import React from 'react';
 import ContainerWrapper from "../UI/ContainerWrapper";
 import Timer from "./Timer";
+const deadlineTime = 1.2 * 60 * 60 * 1000
+
 
 function Promotion() {
 	return (
@@ -13,7 +15,6 @@ function Promotion() {
 					Everyone who orders meal delivery for a week will receive a
 					<span> 20% discount!</span>
 					<br/><br/>
-					The promotion ends on May 20 at 00:00.
 				</div>
 			</div>
 			<Timer/>
