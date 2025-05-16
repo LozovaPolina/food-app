@@ -1,10 +1,11 @@
-import Calculator from "./components/Calculator/Calculator.tsx";
-import Header from "./components/Header.tsx";
-import Menu from "./components/Menu/Menu.tsx";
-import Offer from "./components/Offer/Offer.tsx";
-import Preview from "./components/Preview.tsx";
-import Sidepanel from "./components/Sidepanel.tsx";
-import CalcContextProvider from "./store/calc-context.tsx";
+import Calculator from "./components/Calculator/Calculator";
+import Header from "./components/Header";
+import Menu from "./components/Menu/Menu";
+import Offer from "./components/Offer/Offer";
+import Preview from "./components/Preview";
+import Sidepanel from "./components/Sidepanel";
+import CalcContextProvider from "./store/calc-context";
+import OrderForm from "./components/froms/OrderForm";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Calculator />
       </CalcContextProvider>
       <Menu />
+        <OrderForm/>
     </>
   );
 }

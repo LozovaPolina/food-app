@@ -22,6 +22,7 @@ export default function ContainerWrapper({
       <div className={wrapperClass}>
         {bgElement}
         <div className='container'>{children}</div>
+        {divider && <div className='divider'></div>}
       </div>
     );
   }

@@ -9,3 +9,6 @@ export function isNotEmpty(value: string): boolean {
   return false
 }
 
+export function isLetterWord(value: string): boolean {
+  return /^\p{L}+$/u.test(value);
+}

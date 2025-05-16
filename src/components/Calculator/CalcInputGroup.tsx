@@ -1,7 +1,7 @@
-import { useInput } from "../../hooks/useInput.ts";
-import { useCalcContext } from "../../store/calc-context.tsx";
-import { isNotEmpty, isNumber } from "../../util/validation.ts";
-import Input from "../UI/Input.tsx";
+import { useInput } from "../../hooks/useInput";
+import { useCalcContext } from "../../store/calc-context";
+import { isNotEmpty, isNumber } from "../../util/validation";
+import Input from "../UI/Input";
 function CalcInputGroup() {
   const setConstitution = useCalcContext().setConstitution;
   console.log("hi");

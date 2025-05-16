@@ -35,6 +35,14 @@ const DUMMY_MENU_ITEMS: MenuItemType[] = [
     image: { src: postImg, alt: "post" },
     price: 430,
   },
+  {
+    id: "m3",
+    title: "Menu 'Lenten'",
+    descr:
+      "Menu 'Lenten' is a careful selection of ingredients: completeabsence of animal products, milk from almonds, oats, coconut orbuckwheat, the correct amount of proteins through tofu and imported vegetarian steaks.",
+    image: { src: postImg, alt: "post" },
+    price: 430,
+  },
 ];
 function Menu() {
   return (
