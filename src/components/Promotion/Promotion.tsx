@@ -11,7 +11,7 @@ function Promotion() {
 				<div className="promotion__descr">
 					We value every client and offer you the opportunity to become one on very favorable terms.
 					Everyone who orders meal delivery for a week will receive a
-					<span>20% discount!</span>
+					<span> 20% discount!</span>
 					<br/><br/>
 					The promotion ends on May 20 at 00:00.
 				</div>
