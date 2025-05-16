@@ -29,20 +29,31 @@ export default function Slider({ items }: sliderProps) {
   const currentOffsetXRef = useRef(0);
 
   const nextSlideHandler = (index: number) => {
-    if (index > items.length) return;
-    const containerWidth = getRefValue(containerRef).offsetWidth;
+    if (index > items.length) {
+      setCurSlideIndex(1);
+      setOffsetX(0);
+    }else {
+      const containerWidth = getRefValue(containerRef).offsetWidth;
 
-    setCurSlideIndex(index);
-    setOffsetX(-(containerWidth * (index - 1)));
-    console.log(-(containerWidth * (index - 1)));
+      setCurSlideIndex(pre => pre + 1);
+      setOffsetX(-(containerWidth * (index - 1)));
+      console.log(-(containerWidth * (index - 1)));
+    }
+
   };
   const prevSlideHandler = (index: number) => {
-    if (index < 1) return;
-
     const containerWidth = getRefValue(containerRef).offsetWidth;
+    if (index < 1) {
+      setCurSlideIndex(items.length);
+      setOffsetX(-(containerWidth * (items.length - 1)));
+    }else {
+      setCurSlideIndex(index);
+      setOffsetX(-(containerWidth * (index - 1)));
+    }
 
-    setCurSlideIndex(index);
-    setOffsetX(-(containerWidth * (index - 1)));
+
+
+
   };
 
   const onTouchStart = (
@@ -123,7 +134,7 @@ export default function Slider({ items }: sliderProps) {
           <img src={leftImg} alt='prev' />
         </div>
         <span id='current'>{addZeroToPositiveNum(curSlideIndex)}</span>/
-        <span id='total'>{addZeroToPositiveNum(curSlideIndex + 1)}</span>
+        <span id='total'>{`${curSlideIndex !==items.length  ?  addZeroToPositiveNum(curSlideIndex + 1) : '01'}`}</span>
         <div
           className='offer__slider-next'
           onClick={() => nextSlideHandler(curSlideIndex + 1)}
