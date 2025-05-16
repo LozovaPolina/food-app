@@ -7,6 +7,7 @@ import Sidepanel from "./components/Sidepanel";
 import CalcContextProvider from "./store/calc-context";
 import OrderForm from "./components/froms/OrderForm";
 import Promotion from "./components/Promotion/Promotion";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Menu />
         <OrderForm/>
         <Promotion/>
+        <Footer/>
     </>
   );
 }

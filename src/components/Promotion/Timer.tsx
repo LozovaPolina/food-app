@@ -50,7 +50,7 @@ function Timer() {
 	return (
 		<div className="promotion__timer">
 			<div className="title">{message}</div>
-			{!isExpired && (
+
 				<div className="timer">
 					<div className="timer__block">
 						<span>{addZeroToPositiveNum(days)}</span> days
@@ -65,7 +65,7 @@ function Timer() {
 						<span>{addZeroToPositiveNum(seconds)}</span> seconds
 					</div>
 				</div>
-			)}
+
 		</div>
 	);
 }
